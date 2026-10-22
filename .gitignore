@@ -1,0 +1,7 @@
+node_modules/
+synapto-backend/node_modules/
+synapto-backend/data/
+*.log
+.DS_Store
+.env
+.env.*
