@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: synapto
+    runtime: docker
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: PORT
+        value: 3001
+      - key: STATIC_DIR
+        value: /app

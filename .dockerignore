@@ -1,0 +1,6 @@
+node_modules
+synapto-backend/node_modules
+synapto-backend/data
+synapto-original-backup.html
+.git
+*.md
