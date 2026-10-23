@@ -10,44 +10,44 @@ Interactive AI literacy platform — lessons, quizzes, AI Builder, trophies, cer
 
 Open **http://localhost:3001/synapto-xai.html**
 
-One process serves the API and the frontend.
+One Node process serves the API and the frontend.
 
-## Project layout
+### Manual
 
+```bash
+cd synapto-backend
+STATIC_DIR=.. PORT=3001 node server.js
 ```
-├── synapto-xai.html      # App shell
-├── css/synapto.css       # Styles
-├── js/synapto.js         # Application logic
-├── icons/                # PWA icons
-├── manifest.webmanifest
-├── sw.js
-├── Dockerfile            # Production image
-├── render.yaml / railway.toml
-└── synapto-backend/
-    └── server.js         # API + static file server
-```
+
+Requires **Node.js 18+**.
+
+## Features
+
+- 12 learning worlds, 200+ lessons (including xAI & Grok)
+- Parent/learner account gate; email + password auth (scrypt)
+- Illustrated avatars, certificates, streaks, tokens, PWA
+- Zero-dependency backend (`synapto-backend/server.js`)
 
 ## Deploy
 
-### Railway
-1. Push this repo to GitHub
-2. New project → Deploy from GitHub
-3. Railway detects `Dockerfile`
+Docker:
 
-### Render
-1. New → Blueprint → `render.yaml`
-2. Or Web Service + Docker
-
-### Docker locally
 ```bash
 docker build -t synapto .
 docker run -p 3001:3001 synapto
 ```
 
-## Account model
+Or connect this repo to **Railway** / **Render** (see `Dockerfile`, `railway.toml`, `render.yaml`).
 
-- **Continue as learner** — no account required
-- **Parent/Teacher** — email + password (scrypt), optional Google Sign-In
+## Layout
+
+```
+synapto-xai.html          App shell
+css/synapto.css           Styles
+js/synapto.js             App + lesson data
+icons/                    PWA icons
+synapto-backend/server.js API + static server
+```
 
 ## License
 

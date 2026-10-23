@@ -2,34 +2,31 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#0A0A0B">
-<meta name="application-name" content="Synapto AI">
+<meta name="description" content="Synapto AI — Learn AI through interactive lessons, experiments, and challenges.">
+<meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Synapto">
-<meta name="mobile-web-app-capable" content="yes">
+<meta name="application-name" content="Synapto AI">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <link rel="icon" type="image/png" sizes="512x512" href="icons/icon-512.png">
 <link rel="apple-touch-icon" href="icons/icon-180.png">
 <title>Synapto — Learn AI</title>
-<link rel="stylesheet" href="css/synapto-base.css">
-<link rel="stylesheet" href="css/synapto-components.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/synapto.css">
 <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
-<div id="app"></div>
-<script src="js/synapto-data.js"></script>
-<script src="js/synapto.js" defer></script>
+<div class="wrap" id="app"></div>
+<script src="js/synapto.js"></script>
 <script>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function () {
-    navigator.serviceWorker.register('./sw.js').then(function (reg) {
-      console.log('Synapto SW registered', reg.scope);
-    }).catch(function (err) {
-      console.warn('SW registration failed', err);
-    });
+    navigator.serviceWorker.register('./sw.js').catch(function () {});
   });
 }
 </script>
