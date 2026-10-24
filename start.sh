@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 ROOT="$(cd "$(dirname "$0")" && pwd)"
-PORT="${PORT:-3001}"
-echo "▶ Synapto (API + app) on :$PORT"
+export STATIC_DIR="${STATIC_DIR:-$ROOT}"
+export PORT="${PORT:-3001}"
 cd "$ROOT/synapto-backend"
-STATIC_DIR="$ROOT" PORT="$PORT" node server.js
+exec node server.js
