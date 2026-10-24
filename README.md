@@ -1,54 +1,50 @@
 # Synapto AI
 
-Interactive AI literacy platform — lessons, quizzes, AI Builder, trophies, certificates, and an **xAI & Grok** world.
+**Interactive AI literacy platform** — short lessons, quizzes, collectible trophies, classroom tools, and a local AI tutor (Spark). Built for learners roughly ages 8–18, with parent/teacher modes.
+
+> Independent educational product. Not affiliated with xAI / SpaceXSI unless separately agreed.
 
 ## Quick start
 
 ```bash
 ./start.sh
+# or
+npm start
 ```
 
-Open **http://localhost:3001/synapto-xai.html**
+Open **http://localhost:3001/synapto-complete.html** (standalone) or **http://localhost:3001/synapto-xai.html** (modular).
 
-One Node process serves the API and the frontend.
-
-### Manual
-
-```bash
-cd synapto-backend
-STATIC_DIR=.. PORT=3001 node server.js
-```
-
-Requires **Node.js 18+**.
-
-## Features
-
-- 12 learning worlds, 200+ lessons (including xAI & Grok)
-- Parent/learner account gate; email + password auth (scrypt)
-- Illustrated avatars, certificates, streaks, tokens, PWA
-- Zero-dependency backend (`synapto-backend/server.js`)
-
-## Deploy
-
-Docker:
-
-```bash
-docker build -t synapto .
-docker run -p 3001:3001 synapto
-```
-
-Or connect this repo to **Railway** / **Render** (see `Dockerfile`, `railway.toml`, `render.yaml`).
+Health: `GET /health` → `{ ok, version, security, storage }`
 
 ## Layout
 
 ```
-synapto-xai.html          App shell
-css/synapto.css           Styles
-js/synapto.js             App + lesson data
-icons/                    PWA icons
-synapto-backend/server.js API + static server
+.
+├── synapto-complete.html     # Full standalone app
+├── synapto-xai.html          # Modular shell
+├── css/  js/  icons/         # Frontend assets
+├── synapto-backend/
+│   ├── server.js             # API + static host (v2.2)
+│   └── store.js              # Atomic JSON + optional Postgres
+├── school-pilot/             # One-pager + demo script
+├── Dockerfile  railway.toml  render.yaml
+├── DEPLOY.md
+└── start.sh
 ```
+
+## Storage
+
+| Mode | Setup |
+|------|--------|
+| JSON (default) | Atomic writes + backups in `synapto-backend/data/backups/` |
+| Postgres | `cd synapto-backend && npm i` + `DATABASE_URL` |
+
+See `.env.example` and [DEPLOY.md](./DEPLOY.md).
+
+## School pilots
+
+See [school-pilot/](./school-pilot/).
 
 ## License
 
-Educational project. Not an official xAI product.
+See [LICENSE](./LICENSE).
